@@ -64,11 +64,11 @@ func ResizeBilinear(img *image.NRGBA, newWidth, newHeight int) *image.NRGBA {
 			blue := float32(a.B)*float32(a.A)*odx*ody + float32(b.B)*float32(b.A)*dx*ody +
 				float32(c.B)*float32(c.A)*dy*odx + float32(d.B)*float32(d.A)*dx*dy
 
-			asum := (float32(a.A) + float32(b.A) + float32(c.A) + float32(d.A)) / 4.0
-			if asum > 0 {
-				red /= asum
-				green /= asum
-				blue /= asum
+			aavg := (float32(a.A) + float32(b.A) + float32(c.A) + float32(d.A)) / 4.0
+			if aavg > 0 {
+				red /= aavg
+				green /= aavg
+				blue /= aavg
 				if red > 255 {
 					red = 255
 				}
